@@ -36,7 +36,7 @@ Developed by BRIA AI, RMBG v2.0 is available as a source-available model for non
   - The model is released under a Creative Commons license for non-commercial use.
   - Commercial use is subject to a commercial agreement with BRIA. [Contact Us](https://bria.ai/contact-us) for more information. 
 
-- **Model Description:** BRIA RMBG-2.0 is a segmentation model trained exclusively on a professional-grade dataset.
+- **Model Description:** BRIA RMBG-2.0 is a dichotomous image segmentation model trained exclusively on a professional-grade dataset.
 - **BRIA:** Resources for more information: [BRIA AI](https://bria.ai/)
 
 
@@ -80,37 +80,12 @@ For clarity, we provide our data distribution according to different categories,
 ![examples](results.png)
 
 Architecture
-RMBG-2.0 is developed on the BiRefNet enhanced with our proprietary dataset. This training data significantly improve the model’s accuracy and effectiveness for background-removal task.
-
-#####
-
-### Model Description
-
-<!-- Provide a longer summary of what this model is. -->
+RMBG-2.0 is developed on the BiRefNet enhanced with our proprietary dataset. This training data significantly improve the model’s accuracy and effectiveness for background-removal task.<br>
+**Original BiRefNet Repository:** https://github.com/ZhengPeng7/BiRefNet
 
 
 
-- **Developed by:** [BRIA AI](https://bria.ai/)
-- **Funded by [optional]:** [More Information Needed]
-- **Shared by [optional]:** [More Information Needed]
-- **Model type:** Background Removal 
-- **Language(s) (NLP):** [More Information Needed]
-- **License:** [More Information Needed]
-- **Finetuned from model [optional]:** [More Information Needed]
-
-### Model Sources [optional]
-
-<!-- Provide the basic links for the model. -->
-
-- **Repository:** [More Information Needed]
-- **Paper [optional]:** [More Information Needed]
-- **Demo [optional]:** [More Information Needed]
-
-## Uses
-
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-
-### Direct Use
+### Usage
 
 <!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
 
