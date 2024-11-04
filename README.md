@@ -119,9 +119,9 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import torch
 from torchvision import transforms
-from models.birefnet import BiRefNet
+from transformers import AutoModelForImageSegmentation
 
-birefnet = BiRefNet.from_pretrained('briaai/RMBG-2.0')
+birefnet = AutoModelForImageSegmentation.from_pretrained('briaai/RMBG-2.0', trust_remote_code=True)
 torch.set_float32_matmul_precision(['high', 'highest'][0])
 birefnet.to('cuda')
 birefnet.eval()
