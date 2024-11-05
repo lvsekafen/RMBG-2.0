@@ -80,9 +80,17 @@ Open source models comparison
 ![examples](collage.png)
 
 ### Architecture
-RMBG-2.0 is developed on the BiRefNet architecture enhanced with our proprietary dataset. This training data significantly improve the model’s accuracy and effectiveness for background-removal task.<br>
-**Original BiRefNet Repository:** https://github.com/ZhengPeng7/BiRefNet
+RMBG-2.0 is developed on the [BiRefNet](https://github.com/ZhengPeng7/BiRefNet) architecture enhanced with our proprietary dataset and training scheme. This training data significantly improve the model’s accuracy and effectiveness for background-removal task.<br>
+If you use this model in your research, please cite:
 
+```
+@article{BiRefNet,
+  title={Bilateral Reference for High-Resolution Dichotomous Image Segmentation},
+  author={Zheng, Peng and Gao, Dehong and Fan, Deng-Ping and Liu, Li and Laaksonen, Jorma and Ouyang, Wanli and Sebe, Nicu},
+  journal={CAAI Artificial Intelligence Research},
+  year={2024}
+}
+```
 
 
 ### Usage
@@ -123,14 +131,3 @@ image.putalpha(mask)
 image.save("no_bg_image.png")
 ```
 
-
-## Citation
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
-
-```
-@article{BiRefNet,
-  title={Bilateral Reference for High-Resolution Dichotomous Image Segmentation},
-  author={Zheng, Peng and Gao, Dehong and Fan, Deng-Ping and Liu, Li and Laaksonen, Jorma and Ouyang, Wanli and Sebe, Nicu},
-  journal={CAAI Artificial Intelligence Research},
-  year={2024}
-}
