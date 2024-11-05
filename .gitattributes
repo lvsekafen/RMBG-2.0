@@ -37,3 +37,4 @@ model_not_working.not_safetensors filter=lfs diff=lfs merge=lfs -text
 t4.png filter=lfs diff=lfs merge=lfs -text
 collage.png filter=lfs diff=lfs merge=lfs -text
 collage3.png filter=lfs diff=lfs merge=lfs -text
+collage5.png filter=lfs diff=lfs merge=lfs -text
