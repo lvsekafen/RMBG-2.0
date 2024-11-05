@@ -77,7 +77,7 @@ For clarity, we provide our data distribution according to different categories,
 
 ## Qualitative Evaluation
 
-![examples](results.png)
+![examples](collage.png)
 
 ### Architecture
 RMBG-2.0 is developed on the BiRefNet enhanced with our proprietary dataset. This training data significantly improve the model’s accuracy and effectiveness for background-removal task.<br>
