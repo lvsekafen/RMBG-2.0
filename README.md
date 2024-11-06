@@ -80,7 +80,7 @@ Open source models comparison
 ![examples](collage5.png)
 
 ### Architecture
-RMBG-2.0 is developed on the [BiRefNet](https://github.com/ZhengPeng7/BiRefNet) architecture enhanced with our proprietary dataset and training scheme. This training data significantly improve the model’s accuracy and effectiveness for background-removal task.<br>
+RMBG-2.0 is developed on the [BiRefNet](https://github.com/ZhengPeng7/BiRefNet) architecture enhanced with our proprietary dataset and training scheme. This training data significantly improves the model’s accuracy and effectiveness for background-removal task.<br>
 If you use this model in your research, please cite:
 
 ```
