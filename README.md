@@ -77,6 +77,7 @@ For clarity, we provide our data distribution according to different categories,
 
 ## Qualitative Evaluation
 Open source models comparison
+![diagram](diagram.png)
 ![examples](collage5.png)
 
 ### Architecture
