@@ -93,10 +93,19 @@ If you use this model in your research, please cite:
 }
 ```
 
+#### Requirements
+```bash
+torch
+torchvision
+pillow
+kornia
+transformers
+```
 
 ### Usage
 
 <!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
+
 
 ```python
 from PIL import Image
