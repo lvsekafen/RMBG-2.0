@@ -15,7 +15,7 @@ tags:
 
 # BRIA Background Removal v2.0 Model Card
 
-RMBG v2.0 is our new state-of-the-art background removal model, designed to effectively separate foreground from background in a range of
+RMBG v2.0 is our new state-of-the-art background removal model significantly improves RMBG v1.4. The model is designed to effectively separate foreground from background in a range of
 categories and image types. This model has been trained on a carefully selected dataset, which includes:
 general stock images, e-commerce, gaming, and advertising content, making it suitable for commercial use cases powering enterprise content creation at scale. 
 The accuracy, efficiency, and versatility currently rival leading source-available models. 
