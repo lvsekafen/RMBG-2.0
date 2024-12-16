@@ -27,6 +27,9 @@ Developed by BRIA AI, RMBG v2.0 is available as a source-available model for non
 
 Join our [Discord community](https://discord.gg/Nxe9YW9zHS) for more information, tutorials, tools, and to connect with other users!
 
+## **Purchase:** to purchase a commercial license simply click [Here](https://go.bria.ai/3D5EGp0).
+
+
 ![examples](t4.png)
 
 ## Model Details
@@ -37,7 +40,9 @@ Join our [Discord community](https://discord.gg/Nxe9YW9zHS) for more information
 - **Model type:** Background Removal 
 - **License:** [bria-rmbg-2.0](https://bria.ai/bria-huggingface-model-license-agreement/)
   - The model is released under a Creative Commons license for non-commercial use.
-  - Commercial use is subject to a commercial agreement with BRIA. To purchase a commercial license simply click [Here](https://go.bria.ai/3D5EGp0).
+  - Commercial use is subject to a commercial agreement with BRIA.
+
+  **Purchase:** to purchase a commercial license simply click [Here](https://go.bria.ai/3D5EGp0).
 
 - **Model Description:** BRIA RMBG-2.0 is a dichotomous image segmentation model trained exclusively on a professional-grade dataset.
 - **BRIA:** Resources for more information: [BRIA AI](https://bria.ai/)
