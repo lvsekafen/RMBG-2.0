@@ -21,13 +21,13 @@ general stock images, e-commerce, gaming, and advertising content, making it sui
 The accuracy, efficiency, and versatility currently rival leading source-available models. 
 It is ideal where content safety, legally licensed datasets, and bias mitigation are paramount. 
 
-Developed by BRIA AI, RMBG v2.0 is available as a source-available model for non-commercial use. 
+Developed by BRIA AI, RMBG v2.0 is available as a source-available model for non-commercial use.
+
+**Purchase:** to purchase a commercial license simply click [Here](https://go.bria.ai/3D5EGp0).
 
 [CLICK HERE FOR A DEMO](https://huggingface.co/spaces/briaai/BRIA-RMBG-2.0)
 
 Join our [Discord community](https://discord.gg/Nxe9YW9zHS) for more information, tutorials, tools, and to connect with other users!
-
-## **Purchase:** to purchase a commercial license simply click [Here](https://go.bria.ai/3D5EGp0).
 
 
 ![examples](t4.png)
