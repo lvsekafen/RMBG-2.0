@@ -23,12 +23,21 @@ It is ideal where content safety, legally licensed datasets, and bias mitigation
 
 Developed by BRIA AI, RMBG v2.0 is available as a source-available model for non-commercial use.
 
-**Purchase:** to purchase a commercial license simply click [Here](https://go.bria.ai/3D5EGp0).
+### Get Access
+
+Bria RMBG2.0 is avaialabe everywhere you build, either as source-code and weights, ComfyUI nodes or API endpoints.
+
+- **Purchase:** for commercial license simply click [Here](https://go.bria.ai/3D5EGp0).
+- **Fal.ai**: [Run it as an API](https://fal.ai/models/fal-ai/bria/background/remove)
+- **ComfyUI**: [Use it in workflows](https://github.com/Bria-AI/ComfyUI-BRIA-API)
+
+For more information, please visit our [website](https://bria.ai/).
+
+Join our [Discord community](https://discord.gg/Nxe9YW9zHS) for more information, tutorials, tools, and to connect with other users!
 
 [CLICK HERE FOR A DEMO](https://huggingface.co/spaces/briaai/BRIA-RMBG-2.0)
 
 Join our [Discord community](https://discord.gg/Nxe9YW9zHS) for more information, tutorials, tools, and to connect with other users!
-
 
 ![examples](t4.png)
 
