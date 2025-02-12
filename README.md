@@ -28,7 +28,7 @@ Developed by BRIA AI, RMBG v2.0 is available as a source-available model for non
 Bria RMBG2.0 is avaialabe everywhere you build, either as source-code and weights, ComfyUI nodes or API endpoints.
 
 - **Purchase:** for commercial license simply click [Here](https://go.bria.ai/3D5EGp0).
-- **Fal.ai**: [Run it as an API](https://fal.ai/models/fal-ai/bria/background/remove)
+- **API Endpoint**: [Bria.ai](https://platform.bria.ai/console/api/image-editing), [fal.ai](https://fal.ai/models/fal-ai/bria/background/remove)
 - **ComfyUI**: [Use it in workflows](https://github.com/Bria-AI/ComfyUI-BRIA-API)
 
 For more information, please visit our [website](https://bria.ai/).
