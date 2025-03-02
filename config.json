@@ -16,5 +16,6 @@
       "type": "image"
     }
   },
-  "bb_pretrained": false
+  "bb_pretrained": false,
+  "model_type": "birefnet"
 }
