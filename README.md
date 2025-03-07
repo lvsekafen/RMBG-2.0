@@ -11,6 +11,7 @@ tags:
 - vision
 - legal liability
 - transformers
+- transformers.js
 ---
 
 # BRIA Background Removal v2.0 Model Card
