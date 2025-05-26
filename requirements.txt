@@ -6,3 +6,4 @@ transformers>=4.38.0
 timm>=0.9.12
 kornia>=0.7.1
 requests>=2.31.0
+rembg[cpu]
