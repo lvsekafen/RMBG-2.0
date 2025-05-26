@@ -1,122 +1,90 @@
 import os
-# Set environment variable for MPS fallback to CPU
-os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1'
-
-from safetensors.numpy import save_file, load_file
-
 import gradio as gr
-import torch
-from PIL import Image
-from torchvision import transforms
+from gradio_imageslider import ImageSlider
+from loadimg import load_img
 from transformers import AutoModelForImageSegmentation
-import requests
-from io import BytesIO
-import rembg
+import torch
+from torchvision import transforms
 
-def load_model():
-    """
-    Load model and set device
-    """
-    model = AutoModelForImageSegmentation.from_pretrained("./", trust_remote_code=True)
-    # Use MPS if available (M1/M2 Mac), otherwise CPU
-    device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
-    print(device)
-    model.to(device)
-    model.eval()
-    return model, device
+torch.set_float32_matmul_precision(["high", "highest"][0])
 
-def process_image(input_image, model, device):
-    """
-    Process image and remove background
-    Args:
-        input_image: Input PIL Image
-        model: Pretrained model
-        device: Computing device
-    Returns:
-        PIL Image with transparent background
-    """
-    if input_image is None:
-        return None
-    
-    # Image preprocessing
-    transform = transforms.Compose([
+birefnet = AutoModelForImageSegmentation.from_pretrained(
+    "./", trust_remote_code=True
+)
+birefnet.to("cpu")
+
+transform_image = transforms.Compose(
+    [
         transforms.Resize((1024, 1024)),
         transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-    ])
-    
-    # Convert to tensor and move to device
-    img_tensor = transform(input_image).unsqueeze(0).to(device)
-    
-    # Predict segmentation mask
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+    ]
+)
+
+output_folder = 'output_images'
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
+def fn(image):
+    im = load_img(image, output_type="pil")
+    im = im.convert("RGB")
+    origin = im.copy()
+    image = process(im)    
+    image_path = os.path.join(output_folder, "no_bg_image.png")
+    image.save(image_path)
+    return (image, origin), image_path
+
+
+def process(image):
+    image_size = image.size
+    input_images = transform_image(image).unsqueeze(0).to("cuda")
+    # Prediction
     with torch.no_grad():
-        pred = model(img_tensor)[-1].sigmoid().cpu()
-    
-    # Convert mask to PIL Image
-    mask = transforms.ToPILImage()(pred[0].squeeze())
-    mask = mask.resize(input_image.size)
-    
-    # Create new image with transparent background
-    result = Image.new('RGBA', input_image.size, (0, 0, 0, 0))
-    # Convert input image to RGBA mode
-    input_image = input_image.convert('RGBA')
-    # Merge images using mask
-    result.paste(input_image, (0, 0), mask=mask)
-    
-    return result
+        preds = birefnet(input_images)[-1].sigmoid().cpu()
+    pred = preds[0].squeeze()
+    pred_pil = transforms.ToPILImage()(pred)
+    mask = pred_pil.resize(image_size)
+    image.putalpha(mask)
+    return image
+  
+def process_file(f):
+    name_path = f.rsplit(".",1)[0]+".png"
+    im = load_img(f, output_type="pil")
+    im = im.convert("RGB")
+    transparent = process(im)
+    transparent.save(name_path)
+    return name_path
+
+slider1 = ImageSlider(label="RMBG-2.0", type="pil")
+slider2 = ImageSlider(label="RMBG-2.0", type="pil")
+image = gr.Image(label="Upload an image")
+image2 = gr.Image(label="Upload an image",type="filepath")
+text = gr.Textbox(label="Paste an image URL")
+png_file = gr.File(label="output png file")
 
 
-def process_image_wtich_rembg(input_image):
-    """
-    Process image and remove background
-    Args:
-        input_image: Input PIL Image
-    Returns:
-        PIL Image with transparent background
-    """
-    if input_image is None:
-        return None
-    
-    output_image = rembg.remove(input_image)
+chameleon = load_img("giraffe.jpg", output_type="pil")
 
-    return output_image
+url = "http://farm9.staticflickr.com/8488/8228323072_76eeddfea3_z.jpg"
+
+tab1 = gr.Interface(
+    fn, inputs=image, outputs=[slider1, gr.File(label="output png file")], examples=[chameleon], api_name="image"
+)
+
+tab2 = gr.Interface(fn, inputs=text, outputs=[slider2, gr.File(label="output png file")], examples=[url], api_name="text")
+tab3 = gr.Interface(process_file, inputs=image2, outputs=png_file, examples=["giraffe.jpg"], api_name="png")
 
 
-def remove_bg(image=None, url=None):
-    """
-    Main function for background removal
-    Args:
-        image: Uploaded image
-        url: Image URL
-    """
-    if url:
-        try:
-            response = requests.get(url)
-            input_image = Image.open(BytesIO(response.content)).convert('RGB')
-        except:
-            return None
-    elif image is not None:
-        input_image = Image.fromarray(image).convert('RGB')
-    else:
-        return None
-
-    # model, device = load_model()
-    # return process_image(input_image, model, device)
-    return process_image_wtich_rembg(input_image)
-
-# Create Gradio interface
-demo = gr.Interface(
-    fn=remove_bg,
-    inputs=[
-        gr.Image(label="Upload an image", type="numpy"),
-        gr.Textbox(label="Image URL")
-    ],
-    outputs=gr.Image(label="Output", type="pil"),
-    title="RMBG-2.0 Background Removal",
-    description="Upload an image or provide URL to remove background",
-    cache_examples=False
+demo = gr.TabbedInterface(
+    [tab1, tab2], ["input image", "input url"], title = (
+    "RMBG-2.0 for background removal <br>"
+    "<span style='font-size:16px; font-weight:300;'>"
+    "Background removal model developed by "
+    "<a href='https://bria.ai' target='_blank'>BRIA.AI</a>, trained on a carefully selected dataset,<br> "
+    "and is available as an open-source model for non-commercial use.</span><br>"
+    "<span style='font-size:16px; font-weight:500;'> For testing upload your image and wait.<br>"
+    "</span>")
 )
 
 if __name__ == "__main__":
-    # Launch server
-    demo.launch(server_name="0.0.0.0")
+    demo.launch(show_error=True)
