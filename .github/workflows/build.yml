@@ -22,6 +22,7 @@ jobs:
       - name: Install requirements and installer
         run: |
           pip install -r requirements.txt
+          pip uninstall -y typing
           pip install pyinstaller
       - name: Run pyinstaller
         run: |
